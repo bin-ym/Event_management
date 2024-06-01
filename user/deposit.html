@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deposit Balance</title>
+</head>
+<body>
+    <?php include('../includes/sidebar.php'); ?>
+    <div class="content">
+        <h1>Deposit Balance</h1>
+        <form id="depositForm">
+            <label for="amount">Amount:</label>
+            <input type="number" id="amount" name="amount" required><br>
+            <button type="submit">Deposit Now</button>
+        </form>
+        <div id="depositResult"></div>
+    </div>
+
+    <script>
+        document.getElementById('depositForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const formData = new FormData(document.getElementById('depositForm'));
+            const data = Object.fromEntries(formData.entries());
+
+            fetch('process_deposit.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            })
+            .then(response => response.json())
+            .then(data => {
+                const depositResult = document.getElementById('depositResult');
+                depositResult.innerHTML = `<p>${data.status.toUpperCase()}: ${data.message}</p>`;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                const depositResult = document.getElementById('depositResult');
+                depositResult.innerHTML = `<p>ERROR: An error occurred while processing the deposit.</p>`;
+            });
+        });
+    </script>
+</body>
+</html>

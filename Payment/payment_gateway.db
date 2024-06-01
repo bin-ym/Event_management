@@ -1,0 +1,12 @@
+CREATE DATABASE payment_gateway;
+
+USE payment_gateway;
+
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    balance DECIMAL(10, 2) NOT NULL
+);
+
+-- Insert a sample user with an initial balance
+INSERT INTO users (name, balance) VALUES ('John Doe', 500.00);

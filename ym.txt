@@ -1,0 +1,25 @@
+let's go back to the admin part and in There are 
+1. manage_categories.php 
+
+in there, I want to edit something 
+A. place the existing categories in tabular form that includes edit, delete, and set package buttons
+ When clicking on the set package button It will lead you to the form that consists of Pakacge name, Level(silver, gold, platinum), assign to the manager, date (starting and end date), description, price  
+2. let's combine the manage manager and user pages into a single page and let's call it manage_users(it consists of manager and user) it must be placed into a tabular form that has an edit and delete button for each
+3. feedback 
+make it in tabular form
+
+For Manager 
+1. Events 
+it must fetch from the database(that is assigned to his/her only) and place them into tabular form 
+2. Report
+Make a form to fill out about the event that it makes a report about it
+3. calendar
+show the real calendar and show when the events that happen on that data on the calendar
+
+For user
+
+1. Package
+display categories that will have a photo for each 
+2. set package 
+in this part, the user creates a package(like admin did but it will not assign to manager it is only a job for the admin) for themselves and requests to admin
+on the bottom, it will display the progression of the requested package (like pending, approved)
