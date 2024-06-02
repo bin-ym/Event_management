@@ -18,14 +18,19 @@ $result = $conn->query($sql);
     <div class="categories">
         <?php
         if ($result->num_rows > 0) {
+            $count = 0;
             while ($row = $result->fetch_assoc()) {
+                if ($count % 3 == 0) echo "<div class='row'>";
                 echo "<div class='category'>
                         <img src='../images/{$row['image']}' alt='{$row['category_name']}' style='width: 50vh; height: auto;'>
                         <h3>{$row['category_name']}</h3>
                         <p>{$row['package_details']}</p>
                         <a href='view_packages.php?category_id={$row['category_id']}'>View Packages</a>
                     </div>";
+                $count++;
+                if ($count % 3 == 0) echo "</div>";
             }
+            if ($count % 3 != 0) echo "</div>"; // Close the last row if not closed
         } else {
             echo "<p>No categories found.</p>";
         }

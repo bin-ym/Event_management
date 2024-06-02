@@ -9,9 +9,10 @@ include('../includes/sidebar.php');
 include('../includes/db.php');
 
 // Fetch feedback
-$sql = "SELECT feedback.message, users.username FROM feedback JOIN users ON feedback.user_id = users.user_id";
+$sql = "SELECT feedback.message, users.username 
+        FROM feedback 
+        JOIN users ON feedback.user_id = users.user_id";
 $result = $conn->query($sql);
-
 ?>
 <div class="content">
     <h2>User Feedback</h2>

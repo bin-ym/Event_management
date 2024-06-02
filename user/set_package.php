@@ -14,9 +14,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $level = $_POST['level'];
     $description = $_POST['description'];
     $status = 'pending';
+    $start_date = $_POST['start_date'];
+    $end_date = $_POST['end_date'];
 
-    $sql = "INSERT INTO user_package (user_id, package_name, level, description, status) 
-            VALUES ('$user_id', '$package_name', '$level', '$description', '$status')";
+    $sql = "INSERT INTO user_package (user_id, package_name, level, description, status, start_date, end_date) 
+            VALUES ('$user_id', '$package_name', '$level', '$description', '$status', '$start_date', '$end_date')";
 
     if ($conn->query($sql) === TRUE) {
         echo "Package request submitted successfully";
@@ -33,7 +35,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 $user_id = $_SESSION['user_id'];
 $sql = "SELECT * FROM user_package WHERE user_id = $user_id";
 $result = $conn->query($sql);
-
 ?>
 <div class="content">
     <h2>Set Package</h2>
@@ -48,6 +49,12 @@ $result = $conn->query($sql);
             <option value="platinum">Platinum</option>
         </select>
         <br>
+        <label for="start_date">Start Date:</label>
+        <input type="date" id="start_date" name="start_date" min="<?php echo date('Y-m-d'); ?>" required>
+        <br>
+        <label for="end_date">End Date:</label>
+        <input type="date" id="end_date" name="end_date" min="<?php echo date('Y-m-d'); ?>" required>
+        <br>
         <label for="description">Description:</label>
         <textarea id="description" name="description" required></textarea>
         <br>
@@ -59,6 +66,8 @@ $result = $conn->query($sql);
             <th>Package Name</th>
             <th>Level</th>
             <th>Description</th>
+            <th>Start Date</th>
+            <th>End Date</th>
             <th>Status</th>
         </tr>
         <?php
@@ -68,11 +77,13 @@ $result = $conn->query($sql);
                         <td>{$row['package_name']}</td>
                         <td>{$row['level']}</td>
                         <td>{$row['description']}</td>
+                        <td>{$row['start_date']}</td>
+                        <td>{$row['end_date']}</td>
                         <td>{$row['status']}</td>
                     </tr>";
             }
         } else {
-            echo "<tr><td colspan='4'>No package requests found.</td></tr>";
+            echo "<tr><td colspan='6'>No package requests found.</td></tr>";
         }
         ?>
     </table>

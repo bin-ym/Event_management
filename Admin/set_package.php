@@ -70,10 +70,10 @@ $category_id = $_GET['category_id'];
         </select>
         <br>
         <label for="start_date">Start Date:</label>
-        <input type="date" id="start_date" name="start_date" required>
+        <input type="date" id="start_date" name="start_date" min="<?php echo date('Y-m-d'); ?>" required>
         <br>
         <label for="end_date">End Date:</label>
-        <input type="date" id="end_date" name="end_date" required>
+        <input type="date" id="end_date" name="end_date" min="<?php echo date('Y-m-d')?>" required>
         <br>
         <label for="description">Description:</label>
         <textarea id="description" name="description" required></textarea>

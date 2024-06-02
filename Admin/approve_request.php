@@ -120,10 +120,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </select>
         <br>
         <label for="start_date">Start Date:</label>
-        <input type="date" id="start_date" name="start_date" required>
+        <input type="date" id="start_date" name="start_date" value="<?php echo htmlspecialchars($package['start_date']); ?>" readonly>
         <br>
         <label for="end_date">End Date:</label>
-        <input type="date" id="end_date" name="end_date" required>
+        <input type="date" id="end_date" name="end_date" value="<?php echo htmlspecialchars($package['end_date']); ?>" readonly>
         <br>
         <label for="description">Description:</label>
         <textarea id="description" name="description" required><?php echo htmlspecialchars($package['description']); ?></textarea>
@@ -134,7 +134,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <button type="submit">Approve Package</button>
     </form>
 </div>
-
 
 <?php
 include('../includes/footer.php');

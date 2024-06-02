@@ -1,6 +1,6 @@
 <?php
 session_start();
-if ($_SESSION['user_role'] != 'user') {
+if ($_SESSION['user_role'] != 'manager') {
     header('Location: ../index.php');
     exit;
 }
@@ -9,8 +9,11 @@ include('../includes/header.php');
 include('../includes/sidebar.php');
 include('../includes/db.php');
 
-$user_id = $_SESSION['user_id'];
-$sql = "SELECT * FROM bookings WHERE user_id = $user_id";
+$manager_id = $_SESSION['user_id'];
+$sql = "SELECT b.*, p.package_name 
+        FROM bookings b
+        JOIN packages p ON b.package_id = p.package_id
+        WHERE p.manager_id = $manager_id";
 $result = $conn->query($sql);
 ?>
 <div class="content">

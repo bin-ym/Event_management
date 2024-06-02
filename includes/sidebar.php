@@ -11,7 +11,6 @@
         } elseif ($_SESSION['user_role'] == 'manager') {
             echo '<li><a href="events.php">Events</a></li>';
             echo '<li><a href="report.php">Report</a></li>';
-           // echo '<li><a href="calendar.php">Calendar</a></li>';
             echo '<li><a href="view_bookings.php">View bookings</a></li>';
         } elseif ($_SESSION['user_role'] == 'user') {
             echo '<li><a href="package.php">Packages</a></li>';

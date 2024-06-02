@@ -42,8 +42,7 @@ $result = $conn->query($sql);
         <select id="role" name="role" required>
             <option value="manager">Manager</option>
             <option value="user">User</option>
-        </select>
-        <br>
+        </select>        
         <button type="submit" name="add_user">Add User</button>
     </form>
 

@@ -19,7 +19,8 @@ if (isset($_GET['id'])) {
 
         $sql = "UPDATE packages SET package_name='$package_name', description='$description', price='$price' WHERE package_id=$package_id";
         if ($conn->query($sql) === TRUE) {
-            echo "Package updated successfully";
+            header('Location: manage_categories.php?success=1');
+            exit;
         } else {
             echo "Error: " . $sql . "<br>" . $conn->error;
         }
